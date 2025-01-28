@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Stone : Material
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private string _name = "Stone";
+    private float _mass = 1.0f;
+    private float _drag = 0.25f;
+    private float _jumpForce;
+    private bool _canJump = false;
+    
 }
