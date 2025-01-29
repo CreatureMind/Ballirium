@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaterialManager : MonoBehaviour
+public class MaterialManager 
 {
-    private Material[] _materialManagers = null;
+    public Material[] materialManager = null;
 
     public MaterialManager(Material[] mats)
     {
         if (mats != null)
         {
-            _materialManagers = mats;
+            materialManager = mats;
         }
     }
 }
