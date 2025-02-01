@@ -1,22 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
     //publics
-    public float force;
+    public float moveForce;
     public float jumpForce;
+    
+    public PlayerMaterialScriptableObject[] materials;
 
     //privates
     private Rigidbody _rigidbody;
     private bool _isGrounded;
-    private float _maxVelocity = 3f;
+    private const float MaxVelocity = 3f;
+    [SerializeField] private int firstMaterial = 0;
+    [SerializeField] private bool _canJump;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        InitializeMaterial(materials, firstMaterial);
+    }
+
+    public void InitializeMaterial(PlayerMaterialScriptableObject[] currentMaterial, int index)
+    {
+        name = currentMaterial[index].name;
+        moveForce = currentMaterial[index].moveForce;
+        jumpForce = currentMaterial[index].jumpForce;
+        _rigidbody.mass = currentMaterial[index].mass;
+        _rigidbody.drag = currentMaterial[index].drag;
+        _rigidbody.angularDrag = currentMaterial[index].angularDrag;
+        _rigidbody.isKinematic = currentMaterial[index].isKinematic;
+        _rigidbody.useGravity = currentMaterial[index].useGravity;
+        _canJump = currentMaterial[index].canJump;
     }
 
     // Update is called once per frame
@@ -24,35 +44,35 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            _rigidbody.AddForce(Vector3.forward * force, ForceMode.Acceleration);
+            _rigidbody.AddForce(Vector3.forward * moveForce, ForceMode.Acceleration);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            _rigidbody.AddForce(Vector3.back * force, ForceMode.Acceleration);
+            _rigidbody.AddForce(Vector3.back * moveForce, ForceMode.Acceleration);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            _rigidbody.AddForce(Vector3.right * force, ForceMode.Acceleration);
+            _rigidbody.AddForce(Vector3.right * moveForce, ForceMode.Acceleration);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            _rigidbody.AddForce(Vector3.left * force, ForceMode.Acceleration);
+            _rigidbody.AddForce(Vector3.left * moveForce, ForceMode.Acceleration);
         }
 
         Debug.Log(_rigidbody.velocity.magnitude);
 
-        if (_rigidbody.velocity.magnitude > _maxVelocity)
+        if (_rigidbody.velocity.magnitude > MaxVelocity)
         {
-            _rigidbody.AddForce(-_rigidbody.velocity * _rigidbody.velocity.magnitude / _maxVelocity, ForceMode.Force);
+            _rigidbody.AddForce(-_rigidbody.velocity * _rigidbody.velocity.magnitude / MaxVelocity, ForceMode.Force);
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && _canJump)
         {
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }

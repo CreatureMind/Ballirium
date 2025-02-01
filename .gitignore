@@ -73,3 +73,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 ProjectSettings/Packages/com.unity.probuilder/Settings.json
 /ProjectSettings/Packages/com.unity.probuilder
+Assets/Scripts/.DS_Store
