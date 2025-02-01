@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fe5f51456642f297187456109c829, type: 3}
   m_Name: WoodMaterial
   m_EditorClassIdentifier: 
-  Name: Wood
-  JumpForce: 5
-  MoveForce: 4
-  Mass: 1
-  Drag: 0.1
-  AngularDrag: 0.05
-  Material: {fileID: 0}
-  UseGravity: 1
-  IsKinematic: 0
-  CanJump: 1
+  name: Wood
+  jumpForce: 5
+  moveForce: 4
+  mass: 1
+  drag: 0.1
+  angularDrag: 0.05
+  material: {fileID: 2100000, guid: c189a60aa7cc04b1b97a680ec2907de5, type: 2}
+  useGravity: 1
+  isKinematic: 0
+  canJump: 1

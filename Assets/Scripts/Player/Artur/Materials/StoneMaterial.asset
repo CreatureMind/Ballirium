@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277fe5f51456642f297187456109c829, type: 3}
   m_Name: StoneMaterial
   m_EditorClassIdentifier: 
-  Name: Stone
-  JumpForce: 3.5
-  MoveForce: 1.5
-  Mass: 1
-  Drag: 0.25
-  AngularDrag: 0.05
-  UseGravity: 1
-  IsKinematic: 0
-  CanJump: 0
+  name: Stone
+  jumpForce: 3.5
+  moveForce: 1.5
+  mass: 1
+  drag: 0.25
+  angularDrag: 0.05
+  material: {fileID: 2100000, guid: e12bf02e14713480caee2099556776bb, type: 2}
+  useGravity: 1
+  isKinematic: 0
+  canJump: 0
