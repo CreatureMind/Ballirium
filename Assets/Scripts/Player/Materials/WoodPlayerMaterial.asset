@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 277fe5f51456642f297187456109c829, type: 3}
-  m_Name: StoneMaterial
+  m_Name: WoodPlayerMaterial
   m_EditorClassIdentifier: 
-  name: Stone
-  jumpForce: 3.5
-  moveForce: 1.5
+  name: Wood
+  jumpForce: 5
+  moveForce: 4
+  maxVelocity: 5
   mass: 1
-  drag: 0.25
+  drag: 0.1
   angularDrag: 0.05
-  material: {fileID: 2100000, guid: e12bf02e14713480caee2099556776bb, type: 2}
+  material: {fileID: 2100000, guid: c189a60aa7cc04b1b97a680ec2907de5, type: 2}
   useGravity: 1
   isKinematic: 0
-  canJump: 0
+  canJump: 1

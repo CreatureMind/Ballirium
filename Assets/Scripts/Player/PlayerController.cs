@@ -10,30 +10,34 @@ public class PlayerController : MonoBehaviour
     public float moveForce;
     public float jumpForce;
     
-    public PlayerMaterialScriptableObject[] materials;
+    public PlayerMaterialScriptableObject[] materials = null;
 
     //privates
     private Rigidbody _rigidbody;
+    private Renderer _renderer;
     private bool _isGrounded;
-    private const float MaxVelocity = 3f;
-    [SerializeField] private int firstMaterial = 0;
-    [SerializeField] private bool _canJump;
+    private float _maxVelocity;
+    private int firstMaterial = 0;
+    private bool _canJump;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        InitializeMaterial(materials, firstMaterial);
+        _renderer = GetComponent<Renderer>();
+        InitializePlayerMaterial(materials, firstMaterial);
     }
 
-    public void InitializeMaterial(PlayerMaterialScriptableObject[] currentMaterial, int index)
+    public void InitializePlayerMaterial(PlayerMaterialScriptableObject[] currentMaterial, int index)
     {
         name = currentMaterial[index].name;
         moveForce = currentMaterial[index].moveForce;
         jumpForce = currentMaterial[index].jumpForce;
+        _maxVelocity = currentMaterial[index].maxVelocity;
         _rigidbody.mass = currentMaterial[index].mass;
         _rigidbody.drag = currentMaterial[index].drag;
         _rigidbody.angularDrag = currentMaterial[index].angularDrag;
+        _renderer.material = currentMaterial[index].material;
         _rigidbody.isKinematic = currentMaterial[index].isKinematic;
         _rigidbody.useGravity = currentMaterial[index].useGravity;
         _canJump = currentMaterial[index].canJump;
@@ -64,9 +68,9 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(_rigidbody.velocity.magnitude);
 
-        if (_rigidbody.velocity.magnitude > MaxVelocity)
+        if (_rigidbody.velocity.magnitude > _maxVelocity)
         {
-            _rigidbody.AddForce(-_rigidbody.velocity * _rigidbody.velocity.magnitude / MaxVelocity, ForceMode.Force);
+            _rigidbody.AddForce(-_rigidbody.velocity * _rigidbody.velocity.magnitude / _maxVelocity, ForceMode.Force);
         }
     }
 
@@ -75,6 +79,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && _canJump)
         {
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            InitializePlayerMaterial(materials, firstMaterial == 0 ? firstMaterial = 1 : firstMaterial = 0);
         }
     }
 

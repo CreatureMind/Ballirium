@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277fe5f51456642f297187456109c829, type: 3}
+  m_Name: StonePlayerMaterial
+  m_EditorClassIdentifier: 
+  name: Stone
+  jumpForce: 3.5
+  moveForce: 1.5
+  maxVelocity: 3
+  mass: 1
+  drag: 0.25
+  angularDrag: 0.05
+  material: {fileID: 2100000, guid: e12bf02e14713480caee2099556776bb, type: 2}
+  useGravity: 1
+  isKinematic: 0
+  canJump: 0
