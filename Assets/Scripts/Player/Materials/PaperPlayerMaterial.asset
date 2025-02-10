@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Paper
   moveForce: 10
-  jumpForce: 2
+  jumpForce: 5
   maxVelocity: 10
   mass: 1
   drag: 0.1
-  angularDrag: 0.1
+  angularDrag: 0.25
   material: {fileID: 2100000, guid: a29118cd508c6264490dd21f8a63a014, type: 2}
   useGravity: 1
   isKinematic: 0

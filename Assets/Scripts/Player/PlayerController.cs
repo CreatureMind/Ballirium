@@ -48,22 +48,22 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            _rigidbody.AddForce(Vector3.forward * moveForce, ForceMode.Acceleration);
+            _rigidbody.AddForce(Camera.main.transform.forward * moveForce, ForceMode.Acceleration);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            _rigidbody.AddForce(Vector3.back * moveForce, ForceMode.Acceleration);
+            _rigidbody.AddForce(-Camera.main.transform.forward * moveForce, ForceMode.Acceleration);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            _rigidbody.AddForce(Vector3.right * moveForce, ForceMode.Acceleration);
+            _rigidbody.AddForce(Camera.main.transform.right * moveForce, ForceMode.Acceleration);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            _rigidbody.AddForce(Vector3.left * moveForce, ForceMode.Acceleration);
+            _rigidbody.AddForce(-Camera.main.transform.right * moveForce, ForceMode.Acceleration);
         }
 
         Debug.Log(_rigidbody.velocity.magnitude);
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            InitializePlayerMaterial(materials, firstMaterial == 0 ? firstMaterial = 1 : firstMaterial = 0);
+            InitializePlayerMaterial(materials, firstMaterial = (firstMaterial + 1) % 3);
         }
     }
 

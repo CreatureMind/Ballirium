@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: StonePlayerMaterial
   m_EditorClassIdentifier: 
   name: Stone
-  jumpForce: 3.5
-  moveForce: 1.5
-  maxVelocity: 3
+  moveForce: 2.5
+  jumpForce: 0
+  maxVelocity: 5
   mass: 1
-  drag: 0.25
-  angularDrag: 0.05
+  drag: 0.5
+  angularDrag: 0.25
   material: {fileID: 2100000, guid: e12bf02e14713480caee2099556776bb, type: 2}
   useGravity: 1
   isKinematic: 0
