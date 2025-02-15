@@ -65,9 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.AddForce(-Camera.main.transform.right * moveForce, ForceMode.Acceleration);
         }
-
-        Debug.Log(_rigidbody.velocity.magnitude);
-
+        
         if (_rigidbody.velocity.magnitude > _maxVelocity)
         {
             _rigidbody.AddForce(-_rigidbody.velocity * _rigidbody.velocity.magnitude / _maxVelocity, ForceMode.Force);
