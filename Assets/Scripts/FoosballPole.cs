@@ -51,31 +51,43 @@ public class FoosballPole : MonoBehaviour
 
     private IEnumerator KickBall()
     {
-        float randomRotation = Random.Range(0, 3) * 90 - 90; // Picks -90, 0, or 90 degrees
-        float duration = 0.2f; // Smooth transition time
-        float elapsedTime = 0f;
-        float startRotation = pivot.localRotation.eulerAngles.z;
-        float endRotation = randomRotation;
+        while (true)
+        {
+            // Choose a kick angle (-90, 0, or 90)
+            float randomRotation = Random.Range(0, 3) * 90 - 90;
+            float duration = 0.05f; // Smooth transition
+            float elapsedTime = 0f;
+            float startRotation = pivot.localRotation.eulerAngles.z;
+            float endRotation = randomRotation;
 
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float zRotation = Mathf.LerpAngle(startRotation, endRotation, elapsedTime / duration);
-            pivot.localRotation = Quaternion.Euler(0, 0, zRotation);
-            yield return null;
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float zRotation = Mathf.LerpAngle(startRotation, endRotation, elapsedTime / duration);
+                pivot.localRotation = Quaternion.Euler(0, 0, zRotation);
+                yield return null;
+            }
+
+            // Hold the kick position briefly
+            //yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
+
+            // Return to neutral (0 degrees)
+            float resetDuration = 0.2f;
+            float resetElapsedTime = 0f;
+            float resetStartRotation = pivot.localRotation.eulerAngles.z;
+            float resetEndRotation = 0;
+
+            while (resetElapsedTime < resetDuration)
+            {
+                resetElapsedTime += Time.deltaTime;
+                float zRotation = Mathf.LerpAngle(resetStartRotation, resetEndRotation, resetElapsedTime / resetDuration);
+                pivot.localRotation = Quaternion.Euler(0, 0, zRotation);
+                yield return null;
+            }
+
+            // Wait before the next kick
+            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
         }
-        
-        duration = 0.2f; // Smooth transition time
-        elapsedTime = 0f;
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float zRotation = Mathf.LerpAngle(startRotation, endRotation, elapsedTime / duration);
-            pivot.localRotation = Quaternion.Euler(0, 0, zRotation);
-            yield return null;
-        }
-        pivot.localRotation = Quaternion.Euler(0, 0, 0);
-        
-        yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
     }
+
 }
