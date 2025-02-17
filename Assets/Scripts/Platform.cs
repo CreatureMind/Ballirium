@@ -38,7 +38,7 @@ public class Platform : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
-        _platformRigidbody = gameObject.GetComponent<Rigidbody>();
+        _platformRigidbody = GetComponent<Rigidbody>();
         StartCoroutine(MovePlatform());
     }
 
@@ -72,13 +72,14 @@ public class Platform : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
     }
-
     void FixedUpdate()
     {
         if (_onPlatform)
         {
+            // _player.transform.SetParent(transform);
+            
             Debug.Log("In fixed update: " + _platformRigidbody.velocity + " | " + _playerRigidbody.velocity );
-            // _playerRigidbody.velocity = _platformRigidbody.velocity. * _playerRigidbody.velocity;
+            // _playerRigidbody.velocity *= _platformRigidbody.velocity.magnitude ;
         } // todo https://www.reddit.com/r/Unity3D/comments/14h5zkx/comment/jp9rkaa/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
     }
 
@@ -86,10 +87,11 @@ public class Platform : MonoBehaviour
     {
         if (_player == null)
         {
+            
             _onPlatform = true;
-            _player = other.gameObject;
+            _player =other.collider.gameObject ;
             _playerRigidbody = _player.GetComponent<Rigidbody>();
-            Debug.Log("in OnCollisionEnter ver:  " +  _platformRigidbody.velocity);
+            Debug.Log("in OnCollisionEnter vel:  " +  _playerRigidbody.velocity);
             // Debug.Log("Inside onCollision");
         }
     }
