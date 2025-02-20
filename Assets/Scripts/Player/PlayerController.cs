@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,10 @@ public class PlayerController : MonoBehaviour
     //publics
     public float moveForce;
     public float jumpForce;
+    public TMP_Text MaterialName;
+    //public Camera mainCamera;
+    
+    public Vector3 MaterialNameOffset = new Vector3(0, 0, 0);
     
     public PlayerMaterialScriptableObject[] materials = null;
 
@@ -31,6 +36,9 @@ public class PlayerController : MonoBehaviour
     public void InitializePlayerMaterial(PlayerMaterialScriptableObject[] currentMaterial, int index)
     {
         name = currentMaterial[index].name;
+        MaterialName.gameObject.SetActive(true);
+        MaterialName.text = currentMaterial[index].name;
+        MaterialName.rectTransform.position = Camera.main.WorldToScreenPoint(this.transform.position) + MaterialNameOffset;
         moveForce = currentMaterial[index].moveForce;
         jumpForce = currentMaterial[index].jumpForce;
         _maxVelocity = currentMaterial[index].maxVelocity;
