@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
@@ -11,10 +12,9 @@ public class PlayerController : MonoBehaviour
     public float moveForce;
     public float jumpForce;
     public TMP_Text MaterialName;
-    //public Camera mainCamera;
-    
     public Vector3 MaterialNameOffset = new Vector3(0, 0, 0);
-    
+    public int RestartPoint;
+
     public PlayerMaterialScriptableObject[] materials = null;
 
     //privates
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         name = currentMaterial[index].name;
         MaterialName.gameObject.SetActive(true);
         MaterialName.text = currentMaterial[index].name;
-        MaterialName.rectTransform.position = Camera.main.WorldToScreenPoint(this.transform.position) + MaterialNameOffset;
+        MaterialName.rectTransform.position = Camera.main.WorldToScreenPoint(transform.position) + MaterialNameOffset;
         moveForce = currentMaterial[index].moveForce;
         jumpForce = currentMaterial[index].jumpForce;
         _maxVelocity = currentMaterial[index].maxVelocity;
@@ -82,6 +82,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.y < RestartPoint)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && _canJump)
         {
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);

@@ -3250,6 +3250,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &263754129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263754131}
+  - component: {fileID: 263754130}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &263754130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263754129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624320284418eb044b8cf7038c122099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &263754131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263754129}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 534, y: 427.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274481026
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3575,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329739769
 MonoBehaviour:
@@ -3580,12 +3624,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.9
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -16375,7 +16419,8 @@ MonoBehaviour:
   moveForce: 0
   jumpForce: 0
   MaterialName: {fileID: 329739769}
-  MaterialNameOffset: {x: 0, y: 0, z: 0}
+  MaterialNameOffset: {x: 0, y: 100, z: 0}
+  RestartPoint: -10
   materials:
   - {fileID: 11400000, guid: 6d12ac87dae4244b2a0960896d6253cc, type: 2}
   - {fileID: 11400000, guid: f3d78e2eefd014203ab3c8b5fd76c1a8, type: 2}
@@ -22311,7 +22356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065279616}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000010042821, y: 0.973249, z: -0.22975294, w: 0.00000004254207}
+  m_LocalRotation: {x: -0.00000001004282, y: -0.973249, z: 0.22975294, w: -0.000000042542066}
   m_LocalPosition: {x: 0.00000007944652, y: 0, z: 0.0000019073486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24146,3 +24191,4 @@ SceneRoots:
   - {fileID: 1956967692}
   - {fileID: 607694944}
   - {fileID: 903449971}
+  - {fileID: 263754131}
