@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FoosballPole : MonoBehaviour
 {
@@ -26,7 +28,7 @@ public class FoosballPole : MonoBehaviour
             transform.Translate(Vector3.forward * moveDirection * moveSpeed * Time.deltaTime);
         }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Wall")) // Make sure to tag your walls as "Wall"
@@ -34,7 +36,7 @@ public class FoosballPole : MonoBehaviour
             moveDirection *= -1; // Change direction when hitting a wall
         }
     }
-
+    
     private IEnumerator ChangeMovement()
     {
         while (true)
@@ -51,8 +53,9 @@ public class FoosballPole : MonoBehaviour
     {
         while (true)
         {
-            float randomRotation = Random.Range(0, 3) * 90 - 90; // Picks -90, 0, or 90 degrees
-            float duration = 0.2f; // Smooth transition time
+            // Choose a kick angle (-90, 0, or 90)
+            float randomRotation = Random.Range(0, 3) * 90 - 90;
+            float duration = 0.05f; // Smooth transition
             float elapsedTime = 0f;
             float startRotation = pivot.localRotation.eulerAngles.z;
             float endRotation = randomRotation;
@@ -65,7 +68,26 @@ public class FoosballPole : MonoBehaviour
                 yield return null;
             }
 
+            // Hold the kick position briefly
+            //yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
+
+            // Return to neutral (0 degrees)
+            float resetDuration = 0.2f;
+            float resetElapsedTime = 0f;
+            float resetStartRotation = pivot.localRotation.eulerAngles.z;
+            float resetEndRotation = 0;
+
+            while (resetElapsedTime < resetDuration)
+            {
+                resetElapsedTime += Time.deltaTime;
+                float zRotation = Mathf.LerpAngle(resetStartRotation, resetEndRotation, resetElapsedTime / resetDuration);
+                pivot.localRotation = Quaternion.Euler(0, 0, zRotation);
+                yield return null;
+            }
+
+            // Wait before the next kick
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
         }
     }
+
 }
