@@ -13235,7 +13235,7 @@ MonoBehaviour:
   jumpForce: 0
   MaterialName: {fileID: 1080815126}
   MaterialNameOffset: {x: 0, y: 0, z: 0}
-  RestartPoint: -10
+  RestartPoint: 0
   materials:
   - {fileID: 11400000, guid: 6d12ac87dae4244b2a0960896d6253cc, type: 2}
   - {fileID: 11400000, guid: f3d78e2eefd014203ab3c8b5fd76c1a8, type: 2}
@@ -19016,7 +19016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065279616}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000001004282, y: -0.973249, z: 0.22975294, w: -0.000000042542066}
+  m_LocalRotation: {x: 0.000000010042821, y: 0.973249, z: -0.22975294, w: 0.00000004254207}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19952,12 +19952,12 @@ PrefabInstance:
     - target: {fileID: 3766344117887466486, guid: 057e3de09a5a0294ab25beb71a688acb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.61
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3766344117887466486, guid: 057e3de09a5a0294ab25beb71a688acb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.93
+      value: 28.3
       objectReference: {fileID: 0}
     - target: {fileID: 3766344117887466486, guid: 057e3de09a5a0294ab25beb71a688acb,
         type: 3}
@@ -20027,17 +20027,17 @@ PrefabInstance:
     - target: {fileID: 7089543526916321013, guid: 057e3de09a5a0294ab25beb71a688acb,
         type: 3}
       propertyPath: endPosition.x
-      value: 2.51
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 7089543526916321013, guid: 057e3de09a5a0294ab25beb71a688acb,
         type: 3}
       propertyPath: endPosition.y
-      value: -2.17
+      value: 6.2
       objectReference: {fileID: 0}
     - target: {fileID: 7089543526916321013, guid: 057e3de09a5a0294ab25beb71a688acb,
         type: 3}
       propertyPath: endPosition.z
-      value: 42.85
+      value: 54.1
       objectReference: {fileID: 0}
     - target: {fileID: 7089543526916321013, guid: 057e3de09a5a0294ab25beb71a688acb,
         type: 3}

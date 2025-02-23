@@ -62,6 +62,18 @@ public class Platform : MonoBehaviour
                 Vector3 move = _target - transform.position;
                 move.Normalize();
                 _platformRigidbody.MovePosition(_platformRigidbody.position + move * (Time.deltaTime * speed));
+                if (_onPlatform)
+                {
+                    if (_isPlatformMoving)
+                    {
+                        Vector3 vel = _platformRigidbody.position - _LastPos;
+                        Debug.Log("In fixed update:  vel   " + vel);
+                        Debug.Log("In fixed update:  _platformRigidbody.velocity   " + _platformRigidbody.velocity);
+                        Debug.Log("In fixed update:  _playerRigidbody.velocity   " + _playerRigidbody.velocity);
+                        _LastPos = _platformRigidbody.position;
+                        _playerRigidbody.AddForce(vel, ForceMode.Force);
+                    }
+                }
             }
             else
             {
@@ -70,70 +82,7 @@ public class Platform : MonoBehaviour
                 StartCoroutine(WaitPlatform());
             }
         }
-        // if (onRepeat)
-        // {
-        //     if (!_returning)
-        //     {
-        //         Debug.Log(">>>>>>>>>>>>>>");
-        //         if (Mathf.Abs((transform.position - _target).magnitude) > 1f)
-        //         {
-        //             _isPlatformMoving = true;
-        //             Vector3 move = endPosition - transform.position;
-        //             move.Normalize();
-        //             _platformRigidbody.MovePosition(_platformRigidbody.position + move * (Time.deltaTime * speed));
-        //         }
-        //         else
-        //         {
-        //             Debug.Log("Inside else from start to end ");
-        //             _isPlatformMoving = false;
-        //             StartCoroutine(WaitPlatform());
-        //         }
-        //     }
-        //     //
-        //     // else
-        //     // {
-        //     //     Debug.Log("<<<<<<<<<<<<<<<<<<<<<<");
-        //     //     if (isReturn)
-        //     //     {
-        //     //         Debug.Log("inside is return 71");
-        //     //         if (Mathf.Abs((transform.position - startPosition).magnitude) > 1f)
-        //     //         {
-        //     //             Debug.Log("inside 74");
-        //     //             _isPlatformMoving = true;
-        //     //             Vector3 move = startPosition - transform.position;
-        //     //             move.Normalize();
-        //     //             _platformRigidbody.MovePosition(_platformRigidbody.position + move * (Time.deltaTime * speed));
-        //     //         }
-        //     //         else
-        //     //         {
-        //     //             _isPlatformMoving = false;
-        //     //             StartCoroutine(WaitPlatform());
-        //     //         }
-        //     //     }
-        //     // }
-        // }
-
-
-        if (_onPlatform)
-        {
-            if (_isPlatformMoving)
-            {
-                Vector3 vel = _platformRigidbody.position - _LastPos;
-                Debug.Log("In fixed update:  vel   " + vel);
-                Debug.Log("In fixed update:  _platformRigidbody.velocity   " + _platformRigidbody.velocity);
-                Debug.Log("In fixed update:  _playerRigidbody.velocity   " + _playerRigidbody.velocity);
-                _LastPos = _platformRigidbody.position;
-                _playerRigidbody.AddForce(vel, ForceMode.Force);
-            }
-
-
-            // _player.transform.SetParent(transform);
-            // Vector3 vel = _platformRigidbody.position - _LastPos;
-            // _playerRigidbody.position = (_playerRigidbody.position + vel) * Time.deltaTime;
-            // _LastPos = _platformRigidbody.position;
-            // Debug.Log("In fixed update: " + _platformRigidbody.velocity + " | " + _playerRigidbody.velocity);
-            // _playerRigidbody.velocity *= _platformRigidbody.velocity.magnitude ;
-        } // todo https://www.reddit.com/r/Unity3D/comments/14h5zkx/comment/jp9rkaa/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+ // todo https://www.reddit.com/r/Unity3D/comments/14h5zkx/comment/jp9rkaa/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
         // if (_platformRigidbody != null && _playerRigidbody != null)
         // Debug.Log("In fixed update: " + _platformRigidbody.velocity + " | " + _playerRigidbody.velocity);
