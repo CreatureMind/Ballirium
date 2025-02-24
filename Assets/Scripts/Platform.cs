@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Platform : MonoBehaviour
 {
     public float waitTime = 10f;

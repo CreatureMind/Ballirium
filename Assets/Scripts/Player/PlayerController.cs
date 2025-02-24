@@ -103,6 +103,19 @@ public class PlayerController : MonoBehaviour
         _isGrounded = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Respawn"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (other.CompareTag("Star"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
     void OnCollisionStay(Collision collisionInfo)
     {
         // Debug-draw all contact points and normals
