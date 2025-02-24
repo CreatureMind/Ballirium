@@ -8,9 +8,7 @@ public class Platform : MonoBehaviour
     public Vector3 startPosition;
     public Vector3 endPosition;
     private Vector3 _target;
-
-
-    private bool _CanMove = true;
+    
     private bool _isPlatformMoving;
     private bool _returning;
     private GameObject _player;
