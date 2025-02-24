@@ -23,7 +23,6 @@ public class Platform : MonoBehaviour
 
     void Start()
     {
-        startPosition = transform.position;
         _target = endPosition;
         _platformRigidbody = GetComponent<Rigidbody>();
     }
