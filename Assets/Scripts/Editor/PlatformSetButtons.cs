@@ -1,9 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
-
 [CustomEditor(typeof(Platform))]
-[CanEditMultipleObjects]
+[RequireComponent(typeof(Rigidbody))]
+// [CanEditMultipleObjects]
 public class PlatformSetButtons : Editor
 {
     public override void OnInspectorGUI()
@@ -13,12 +13,18 @@ public class PlatformSetButtons : Editor
 
         if (GUILayout.Button("Set Start Position"))
         {
-            plat.startPosition = plat.transform.position;
+            plat.SetStartPos();
+            Debug.Log("Set Start Position " + plat.transform.position);
         }
 
         if (GUILayout.Button("Set End Position"))
         {
-            plat.endPosition = plat.transform.position;
+            plat.SetEndPos();
+        }
+
+        if (GUI.changed)
+        {
+            EditorUtility.SetDirty(target);
         }
     }
 }

@@ -5,30 +5,42 @@ public class Platform : MonoBehaviour
 {
     public float waitTime = 10f;
     public float speed;
-    public Vector3 startPosition;
-    public Vector3 endPosition;
+    public Vector3 startPosition = Vector3.zero;
+    public Vector3 endPosition = Vector3.zero;
 
     private bool _isPlatformMoving;
-    private bool _returning;
     private bool _onPlatform;
     private bool _enabled;
     private GameObject _player;
     private Rigidbody _playerRigidbody;
     private Rigidbody _platformRigidbody;
-    private Vector3 _target;
-    private Vector3 _lastPos;
-    private Vector3 _currentPos;
-
+    private Vector3 _target = Vector3.zero;
+    private Vector3 _lastPos = Vector3.zero;
     void Start()
     {
-        _target = endPosition;
+        Debug.Log("From start 1: " + startPosition);
+        Debug.Log("From start 2: " + endPosition);
+
         _platformRigidbody = GetComponent<Rigidbody>();
+        _platformRigidbody.position = startPosition;
+        if (_target == Vector3.zero)
+        {
+            _target = endPosition;
+        }
     }
 
+    public void SetStartPos()
+    {
+        startPosition = transform.position;
+    }
+
+    public void SetEndPos()
+    {
+        endPosition = transform.position;
+    }
     private IEnumerator WaitPlatform()
     {
         _enabled = true;
-        _returning = !_returning;
         _target = _target == startPosition ? endPosition : startPosition;
         yield return new WaitForSeconds(waitTime);
         _enabled = false;
@@ -67,7 +79,7 @@ public class Platform : MonoBehaviour
     {
         if (_player == null)
         {
-            _lastPos = new Vector3(0, 0, 0);
+            _lastPos = Vector3.zero;
             _onPlatform = true;
             _player = other.collider.gameObject;
             _playerRigidbody = _player.GetComponent<Rigidbody>();
