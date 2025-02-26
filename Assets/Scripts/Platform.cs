@@ -1,29 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Platform : MonoBehaviour
 {
     public float waitTime = 10f;
     public float speed;
     public Vector3 startPosition;
     public Vector3 endPosition;
-    private Vector3 _target;
 
-
-    private bool _CanMove = true;
     private bool _isPlatformMoving;
     private bool _returning;
+    private bool _onPlatform;
+    private bool _enabled;
     private GameObject _player;
     private Rigidbody _playerRigidbody;
     private Rigidbody _platformRigidbody;
-    private bool _onPlatform;
-    private Vector3 _LastPos;
-    private Vector3 _CurrentPos;
-    private bool _enabled;
+    private Vector3 _target;
+    private Vector3 _lastPos;
+    private Vector3 _currentPos;
 
     void Start()
     {
-        startPosition = transform.position;
         _target = endPosition;
         _platformRigidbody = GetComponent<Rigidbody>();
     }
@@ -51,8 +49,8 @@ public class Platform : MonoBehaviour
                 {
                     if (_isPlatformMoving)
                     {
-                        Vector3 vel = _platformRigidbody.position - _LastPos;
-                        _LastPos = _platformRigidbody.position;
+                        Vector3 vel = _platformRigidbody.position - _lastPos;
+                        _lastPos = _platformRigidbody.position;
                         _playerRigidbody.AddForce(vel, ForceMode.Force);
                     }
                 }
@@ -70,7 +68,7 @@ public class Platform : MonoBehaviour
     {
         if (_player == null)
         {
-            _LastPos = new Vector3(0, 0, 0);
+            _lastPos = new Vector3(0, 0, 0);
             _onPlatform = true;
             _player = other.collider.gameObject;
             _playerRigidbody = _player.GetComponent<Rigidbody>();

@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Renderer _renderer;
     private bool _isGrounded;
     private float _maxVelocity;
-    private int firstMaterial = 0;
+    private int _firstMaterial = 0;
     private bool _canJump;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _renderer = GetComponent<Renderer>();
-        InitializePlayerMaterial(materials, firstMaterial);
+        InitializePlayerMaterial(materials, _firstMaterial);
     }
 
     public void InitializePlayerMaterial(PlayerMaterialScriptableObject[] currentMaterial, int index)
@@ -94,13 +94,26 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            InitializePlayerMaterial(materials, firstMaterial = (firstMaterial + 1) % 3);
+            InitializePlayerMaterial(materials, _firstMaterial = (_firstMaterial + 1) % 3);
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
         _isGrounded = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Respawn"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (other.CompareTag("Star"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 
     void OnCollisionStay(Collision collisionInfo)
