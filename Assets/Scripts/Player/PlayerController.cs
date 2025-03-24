@@ -40,31 +40,24 @@ public class PlayerController : MonoBehaviour
     private int _firstMaterial = 0;
     private bool _canJump;
 
-/*    private void Awake()
-    {
-        if (spawnPoint != null)
-        {
-            transform.position = spawnPoint.transform.position;
-            Debug.Log("Spawn set");
-        }
-        else
-            Debug.LogError("Spawn point not set");
-    }*/
-
-    public void OnDestroy()
-    {
-        Instantiate(gameObject, spawnPoint.transform.position, Quaternion.identity);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+
         _rigidbody = GetComponent<Rigidbody>();
         
         _renderer = GetComponent<Renderer>();
 
+        if (spawnPoint != null)
+        {
+            _rigidbody.MovePosition(spawnPoint.transform.position);
+            Debug.Log("Spawn set");
+        }
+        else
+            Debug.LogError("Spawn point not set");
+
         InitializePlayerMaterial(materials, _firstMaterial);
-        
+
         _pickupStars = StarPanel.GetComponent<PickupStars>();
         
         if (starPickUpEvent == null)
@@ -150,7 +143,12 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Respawn"))
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (other.CompareTag("CheckPoint"))
+        {
+            lastCheckPoint = other.GetComponentInChildren<Transform>().gameObject;
         }
 
         if (other.CompareTag("Star"))
