@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private List<Sound> sounds;
+    [HideInInspector] public AudioSource audioSource;
+    public GameObject masterSlider;
+    public GameObject musicSlider;
+    public GameObject sfxSlider;
     public static AudioManager instance;
 
+    public List<AudioSource> musicAudioSources = new List<AudioSource>();
+    public List<AudioSource> sfxAudioSources = new List<AudioSource>();
 
     void Awake()
     {
@@ -19,28 +23,47 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        foreach (Sound s in sounds)
-        {
-            s.audioSource = gameObject.AddComponent<AudioSource>();
-            s.audioSource.clip = s.clip;
-
-            s.audioSource.volume = s.volume;
-            s.audioSource.pitch = s.pitch;
-            s.audioSource.loop = s.loop;
-        }
         DontDestroyOnLoad(gameObject);
-        PlaySound("theme");
+        PlaySound("Backroundmusic");
     }
 
     public void PlaySound(string soundName)
     {
-        foreach (Sound s in sounds)
+        foreach (AudioSource source in musicAudioSources)
         {
-            if (s.name == soundName)
+            if (source.name == soundName)
             {
-                s.audioSource.Play();
+                source.Play();
             }
+        }
+        foreach (AudioSource source in sfxAudioSources)
+        {
+            if (source.name == soundName)
+            {
+                source.Play();
+            }
+        }
+    }
+
+    public void OnMasterSliderChanged(float value)
+    {
+        AudioListener.volume = value;
+    }
+
+    public void OnMusicSliderChanged(float value)
+    {
+        foreach (AudioSource source in musicAudioSources)
+        {
+            if (source != null)
+                source.volume = value;
+        }
+    }
+    public void OnSFXSliderChanged(float value)
+    {
+        foreach (AudioSource source in sfxAudioSources)
+        {
+            if (source != null)
+                source.volume = value;
         }
     }
 }

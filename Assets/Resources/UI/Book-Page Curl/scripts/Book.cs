@@ -12,18 +12,23 @@ public enum FlipMode
     LeftToRight
 }
 [ExecuteInEditMode]
-public class Book : MonoBehaviour {
+public class Book : MonoBehaviour
+{
     public Canvas canvas;
-    [SerializeField]
-    RectTransform BookPanel;
+    [SerializeField] RectTransform BookPanel;
     public Sprite background;
     public Sprite[] bookPages;
     public bool interactable=true;
     public bool enableShadowEffect=true;
     //represent the index of the sprite shown in the right page
     public int currentPage = 0;
+    public bool isFlipping = false;
     [SerializeField] GameObject GoToLevel1Button;
     [SerializeField] GameObject GoToLevel2Button;
+    [SerializeField] GameObject GoToSettingsButton;
+    [SerializeField] GameObject MasterVolumeSlider;
+    [SerializeField] GameObject MusicVolumeSlider;
+    [SerializeField] GameObject SFXVolumeSlider;
     public int TotalPageCount
     {
         get { return bookPages.Length; }
@@ -51,7 +56,7 @@ public class Book : MonoBehaviour {
     public Image LeftNext;
     public Image Right;
     public Image RightNext;
-    public UnityEvent OnFlip;
+    public UnityEvent hasFlipped;
     float radius1, radius2;
     //Spine Bottom
     Vector3 sb;
@@ -324,7 +329,7 @@ public class Book : MonoBehaviour {
 
         Right.gameObject.SetActive(true);
         Right.transform.position = LeftNext.transform.position;
-        Right.sprite = bookPages[currentPage - 1];
+        Right.sprite = bookPages[currentPage - 2];
         Right.transform.eulerAngles = new Vector3(0, 0, 0);
         Right.transform.SetAsFirstSibling();
 
@@ -395,8 +400,7 @@ public class Book : MonoBehaviour {
         UpdateSprites();
         Shadow.gameObject.SetActive(false);
         ShadowLTR.gameObject.SetActive(false);
-        if (OnFlip != null)
-            OnFlip.Invoke();
+        if (hasFlipped != null) hasFlipped.Invoke();
     }
     public void TweenBack()
     {
@@ -448,15 +452,25 @@ public class Book : MonoBehaviour {
         if (onFinish != null)
             onFinish();
     }
-
     void SpawnButtons()
     {
+        if (currentPage == 0)
+        {
+           GoToSettingsButton.SetActive(true);
+            
+        }else GoToSettingsButton.SetActive(false);
+        if (currentPage != 6 && IsInvoking("OnMouseDragLeftPage"))
+        {
+            MasterVolumeSlider.SetActive(false);
+            MusicVolumeSlider.SetActive(false);
+            SFXVolumeSlider.SetActive(false);
+        }else MasterVolumeSlider.SetActive(true); MusicVolumeSlider.SetActive(true); SFXVolumeSlider.SetActive(true);
+       
         if (currentPage == 2)
         {
             GoToLevel1Button.SetActive(true);
             GoToLevel2Button.SetActive(true);
-        }
-        else GoToLevel1Button.SetActive(false);
-        GoToLevel2Button.SetActive(false);
+        } else GoToLevel1Button.SetActive(false); GoToLevel2Button.SetActive(false);
     }
+    
 }
