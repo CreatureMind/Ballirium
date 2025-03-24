@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour
         _canJump = currentMaterial[index].canJump;
 
 
-        StarPanel = GetComponent<GUI>().;
     }
 
     // Update is called once per frame
