@@ -14,17 +14,24 @@ public class PlayerController : MonoBehaviour
     //publics
     public float moveForce;
     public float jumpForce;
+    public float knockbackForce;
+    
+    public int RestartPoint;
+
+    public GameObject spawnPoint;
+    public GameObject lastCheckPoint;
+
     public TMP_Text MaterialName;
     public Vector3 MaterialNameOffset = new Vector3(0, 0, 0);
-    public Vector3 StarPanelOffset = new Vector3(0, 0, 0);
-    public int RestartPoint;
-    public UnityEvent starPickUpEvent;
+    
+    //public Vector3 StarPanelOffset = new Vector3(0, 0, 0);
     public GameObject StarPanel;
-
+    
 
     public PlayerMaterialScriptableObject[] materials = null;
 
     //privates
+    private UnityEvent starPickUpEvent;
     private PickupStars _pickupStars;
     private Rigidbody _rigidbody;
     private Renderer _renderer;
@@ -33,22 +40,39 @@ public class PlayerController : MonoBehaviour
     private int _firstMaterial = 0;
     private bool _canJump;
 
+/*    private void Awake()
+    {
+        if (spawnPoint != null)
+        {
+            transform.position = spawnPoint.transform.position;
+            Debug.Log("Spawn set");
+        }
+        else
+            Debug.LogError("Spawn point not set");
+    }*/
+
+    public void OnDestroy()
+    {
+        Instantiate(gameObject, spawnPoint.transform.position, Quaternion.identity);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        
         _renderer = GetComponent<Renderer>();
+
         InitializePlayerMaterial(materials, _firstMaterial);
+        
         _pickupStars = StarPanel.GetComponent<PickupStars>();
+        
         if (starPickUpEvent == null)
         {
             starPickUpEvent = new UnityEvent();
         }
         
         starPickUpEvent.AddListener(_pickupStars.StarControllerEvent);
-        
-        
     }
 
     public void InitializePlayerMaterial(PlayerMaterialScriptableObject[] currentMaterial, int index)
@@ -126,13 +150,23 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Respawn"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Destroy(gameObject);
         }
 
         if (other.CompareTag("Star"))
         {
             starPickUpEvent.Invoke();
             Destroy(other.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("StoneBall"))
+        {
+            //_rigidbody.velocity = Vector3.zero;
+            _rigidbody.AddForce((transform.position - collision.transform.position).normalized * knockbackForce, ForceMode.Impulse);
+            Debug.Log($"inside");
         }
     }
 
