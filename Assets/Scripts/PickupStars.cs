@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class PickupStars : MonoBehaviour
 {
+    private int counter = 0;
     [SerializeField] GameObject star1;
     [SerializeField] GameObject star2;
     [SerializeField] GameObject star3;
@@ -23,19 +24,27 @@ public class PickupStars : MonoBehaviour
     {
     }
 
-   public void StarControllerEvent(GameObject star)
-    {
-        switch (star.name)
+   public void StarControllerEvent()
+   {
+       Debug.Log("inside  StarControllerEvent counter: " + counter);
+       
+       counter++;
+       Debug.Log("inside  StarControllerEvent counter: " + counter);
+
+        switch (counter)
         {
-            case "1#Star":
+            case 1:
                 star1.SetActive(true);
                 break;
-            case "2#Star":
+            
+            case 2:
                 star2.SetActive(true);
                 break;
-            case "3#Star":
+            
+            case 3:
                 star3.SetActive(true);
                 break;
         }
+        
     }
 }

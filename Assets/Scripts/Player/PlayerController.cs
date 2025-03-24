@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -13,10 +14,12 @@ public class PlayerController : MonoBehaviour
     public float moveForce;
     public float jumpForce;
     public TMP_Text MaterialName;
+    public GameObject StarPanel;
     public Vector3 MaterialNameOffset = new Vector3(0, 0, 0);
     public int RestartPoint;
-    public UnityEvent<GameObject> starPickUpEvent;
-    [SerializeField] private PickupStars PickupStarsScript;
+    public UnityEvent starPickUpEvent;
+    [SerializeField] private GameObject PickupStarsScript;
+    private PickupStars _pickupStars;
     
     
     public PlayerMaterialScriptableObject[] materials = null;
@@ -36,11 +39,14 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _renderer = GetComponent<Renderer>();
         InitializePlayerMaterial(materials, _firstMaterial);
+        _pickupStars = PickupStarsScript.GetComponent<PickupStars>();
         if (starPickUpEvent == null)
         {
-            starPickUpEvent = new UnityEvent<GameObject>();
+            starPickUpEvent = new UnityEvent();
         }
-        starPickUpEvent.AddListener(PickupStarsScript.StarControllerEvent);
+        
+        starPickUpEvent.AddListener(_pickupStars.StarControllerEvent);
+        
         
     }
 
@@ -60,6 +66,9 @@ public class PlayerController : MonoBehaviour
         _rigidbody.isKinematic = currentMaterial[index].isKinematic;
         _rigidbody.useGravity = currentMaterial[index].useGravity;
         _canJump = currentMaterial[index].canJump;
+
+
+        StarPanel = GetComponent<GUI>().;
     }
 
     // Update is called once per frame
@@ -123,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Star"))
         {
-            starPickUpEvent.Invoke(other.gameObject);
+            starPickUpEvent.Invoke();
             Destroy(other.gameObject);
         }
     }
