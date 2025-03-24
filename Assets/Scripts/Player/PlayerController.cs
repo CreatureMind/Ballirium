@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,17 +15,17 @@ public class PlayerController : MonoBehaviour
     public float moveForce;
     public float jumpForce;
     public TMP_Text MaterialName;
-    public GameObject StarPanel;
     public Vector3 MaterialNameOffset = new Vector3(0, 0, 0);
+    public Vector3 StarPanelOffset = new Vector3(0, 0, 0);
     public int RestartPoint;
     public UnityEvent starPickUpEvent;
-    [SerializeField] private GameObject PickupStarsScript;
-    private PickupStars _pickupStars;
-    
-    
+    public GameObject StarPanel;
+
+
     public PlayerMaterialScriptableObject[] materials = null;
 
     //privates
+    private PickupStars _pickupStars;
     private Rigidbody _rigidbody;
     private Renderer _renderer;
     private bool _isGrounded;
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _renderer = GetComponent<Renderer>();
         InitializePlayerMaterial(materials, _firstMaterial);
-        _pickupStars = PickupStarsScript.GetComponent<PickupStars>();
+        _pickupStars = StarPanel.GetComponent<PickupStars>();
         if (starPickUpEvent == null)
         {
             starPickUpEvent = new UnityEvent();
@@ -66,8 +67,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody.isKinematic = currentMaterial[index].isKinematic;
         _rigidbody.useGravity = currentMaterial[index].useGravity;
         _canJump = currentMaterial[index].canJump;
-
-
+        
     }
 
     // Update is called once per frame
