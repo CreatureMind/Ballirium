@@ -4593,6 +4593,22 @@ MonoBehaviour:
   MaterialName: {fileID: 329739769}
   MaterialNameOffset: {x: 0, y: 100, z: 0}
   RestartPoint: -10
+  starPickUpEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PickupStarsScript: {fileID: 0}
   materials:
   - {fileID: 11400000, guid: 6d12ac87dae4244b2a0960896d6253cc, type: 2}
   - {fileID: 11400000, guid: f3d78e2eefd014203ab3c8b5fd76c1a8, type: 2}
