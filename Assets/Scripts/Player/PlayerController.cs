@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -14,7 +15,10 @@ public class PlayerController : MonoBehaviour
     public TMP_Text MaterialName;
     public Vector3 MaterialNameOffset = new Vector3(0, 0, 0);
     public int RestartPoint;
-
+    public UnityEvent<GameObject> starPickUpEvent;
+    [SerializeField] private PickupStars PickupStarsScript;
+    
+    
     public PlayerMaterialScriptableObject[] materials = null;
 
     //privates
@@ -25,12 +29,19 @@ public class PlayerController : MonoBehaviour
     private int _firstMaterial = 0;
     private bool _canJump;
 
+
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _renderer = GetComponent<Renderer>();
         InitializePlayerMaterial(materials, _firstMaterial);
+        if (starPickUpEvent == null)
+        {
+            starPickUpEvent = new UnityEvent<GameObject>();
+        }
+        starPickUpEvent.AddListener(PickupStarsScript.StarControllerEvent);
+        
     }
 
     public void InitializePlayerMaterial(PlayerMaterialScriptableObject[] currentMaterial, int index)
@@ -112,6 +123,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Star"))
         {
+            starPickUpEvent.Invoke(other.gameObject);
             Destroy(other.gameObject);
         }
     }
