@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class AudioManager : MonoBehaviour
 {
-    [HideInInspector] public AudioSource audioSource;
-    public GameObject masterSlider;
-    public GameObject musicSlider;
-    public GameObject sfxSlider;
+    [SerializeField] private List<Sound> sounds;
     public static AudioManager instance;
 
-    public List<AudioSource> musicAudioSources = new List<AudioSource>();
-    public List<AudioSource> sfxAudioSources = new List<AudioSource>();
+    public Slider masterSlider;
+    public Slider musicSlider;
+    public Slider SFXSlider;
+
+    private float masterVolume = 1f;
+    private float musicVolume = 1f;
+    private float sfxVolume = 1f;
 
     void Awake()
     {
@@ -23,47 +27,76 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        foreach (Sound s in sounds)
+        {
+            s.audioSource = gameObject.AddComponent<AudioSource>();
+            s.audioSource.clip = s.clip;
+
+            s.audioSource.volume = s.volume;
+            s.audioSource.pitch = s.pitch;
+            s.audioSource.loop = s.loop;
+        }
         DontDestroyOnLoad(gameObject);
-        PlaySound("Backroundmusic");
+        PlaySound("BackroundMusic");
+        PlaySound("Collect");
+    }
+
+    private void Start()
+    {
+        masterSlider.onValueChanged.AddListener(delegate { MasterVolume(masterSlider.value); });
+        musicSlider.onValueChanged.AddListener(delegate { MusicVolume(musicSlider.value); });
+        SFXSlider.onValueChanged.AddListener(delegate { SFXVolume(SFXSlider.value); });
+
+        // Set initial volumes
+        masterVolume = masterSlider.value;
+        musicVolume = musicSlider.value;
+        sfxVolume = SFXSlider.value;
+
+        ApplyVolumes();
     }
 
     public void PlaySound(string soundName)
     {
-        foreach (AudioSource source in musicAudioSources)
+        foreach (Sound s in sounds)
         {
-            if (source.name == soundName)
+            if (s.name == soundName)
             {
-                source.Play();
-            }
-        }
-        foreach (AudioSource source in sfxAudioSources)
-        {
-            if (source.name == soundName)
-            {
-                source.Play();
+                s.audioSource.Play();
             }
         }
     }
 
-    public void OnMasterSliderChanged(float value)
+    public void MasterVolume(float value)
     {
-        AudioListener.volume = value;
+        masterVolume = value;
+        ApplyVolumes();
     }
 
-    public void OnMusicSliderChanged(float value)
+    public void MusicVolume(float value)
     {
-        foreach (AudioSource source in musicAudioSources)
-        {
-            if (source != null)
-                source.volume = value;
-        }
+        musicVolume = value;
+        ApplyVolumes();
     }
-    public void OnSFXSliderChanged(float value)
+
+    public void SFXVolume(float value)
     {
-        foreach (AudioSource source in sfxAudioSources)
+        sfxVolume = value;
+        ApplyVolumes();
+    }
+
+    private void ApplyVolumes()
+    {
+        foreach (Sound s in sounds)
         {
-            if (source != null)
-                source.volume = value;
+            if (s.type == MyAudioType.Music)
+            {
+                s.audioSource.volume = musicVolume * masterVolume;
+            }
+            else if (s.type == MyAudioType.SFX)
+            {
+                s.audioSource.volume = sfxVolume * masterVolume;
+            }
         }
     }
 }
