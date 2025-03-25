@@ -10,7 +10,7 @@ public class RollingBall : MonoBehaviour
     public Vector3 moveDirection; // Default forward
 
     private Rigidbody _rigidbody;
-    private int _destroyPoint = -10;
+    private int _destroyPoint = 5;
 
     // Start is called before the first frame update
     void Start()
