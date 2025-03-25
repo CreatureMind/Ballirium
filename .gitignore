@@ -75,3 +75,5 @@ ProjectSettings/Packages/com.unity.probuilder/Settings.json
 /ProjectSettings/Packages/com.unity.probuilder
 *.DS_Store
 /ProjectSettings/Packages/com.unity.probuilder
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+/ProjectSettings/Packages/com.unity.probuilder
