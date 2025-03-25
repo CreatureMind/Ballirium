@@ -1,23 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
+using Random = System.Random;
 
 public class TrapDoorway : MonoBehaviour
 {
-    private BoxCollider[] numberOfDoors;
-    private Random rnd;
+    private BoxCollider[] _numberOfDoors;
+    private Random rnd = new Random();
 
-    // Start is called before the first frame update
     void Start()
     {
-        numberOfDoors = GetComponentsInChildren<BoxCollider>();
-        rnd = new Random();
+        _numberOfDoors = GetComponentsInChildren<BoxCollider>();
+        int num = rnd.Next(0, _numberOfDoors.Length);
+        _numberOfDoors[num].enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+
 }
