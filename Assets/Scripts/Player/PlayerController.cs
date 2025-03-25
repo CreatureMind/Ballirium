@@ -49,10 +49,7 @@ public class PlayerController : MonoBehaviour
         _renderer = GetComponent<Renderer>();
 
         if (spawnPoint != null)
-        {
             _rigidbody.MovePosition(spawnPoint.transform.position);
-            Debug.Log("Spawn set");
-        }
         else
             Debug.LogError("Spawn point not set");
 
@@ -120,7 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y < RestartPoint)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Respawn();
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && _canJump)
@@ -143,12 +140,15 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Respawn"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Respawn();
         }
 
         if (other.CompareTag("CheckPoint"))
         {
-            lastCheckPoint = other.GetComponentInChildren<Transform>().gameObject;
+            Transform childTransform = other.transform.GetChild(0); // Get the first child
+
+            lastCheckPoint = childTransform.gameObject;
+            Destroy(other.GetComponent<SphereCollider>());
         }
 
         if (other.CompareTag("Star"))
@@ -177,5 +177,19 @@ public class PlayerController : MonoBehaviour
         }
 
         _isGrounded = true;
+    }
+
+    void Respawn()
+    {
+        if (lastCheckPoint == null)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.MovePosition(spawnPoint.transform.position);
+        }
+        else
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.MovePosition(lastCheckPoint.transform.position);
+        }
     }
 }
