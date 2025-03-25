@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PickupStars : MonoBehaviour
 {
@@ -10,7 +7,7 @@ public class PickupStars : MonoBehaviour
     [SerializeField] GameObject star2;
     [SerializeField] GameObject star3;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         star1.SetActive(false);
@@ -18,19 +15,10 @@ public class PickupStars : MonoBehaviour
         star3.SetActive(false);
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    
    public void StarControllerEvent()
    {
-       Debug.Log("inside  StarControllerEvent counter: " + counter);
-       
        counter++;
-       Debug.Log("inside  StarControllerEvent counter: " + counter);
-
         switch (counter)
         {
             case 1:
