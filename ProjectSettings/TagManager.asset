@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Star
   - StoneBall
+  - CheckPoint
+  - Spike
   layers:
   - Default
   - TransparentFX
