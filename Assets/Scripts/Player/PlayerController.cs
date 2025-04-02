@@ -1,36 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    //publics
+    // Public Variables
     public float moveForce;
     public float jumpForce;
     public float knockbackForce;
-    
+    public float flySpeed = 10f; // Speed for flying mode
     public int RestartPoint;
-
+    
     public GameObject spawnPoint;
     public GameObject lastCheckPoint;
 
     public TMP_Text MaterialName;
     public Vector3 MaterialNameOffset = new Vector3(0, 0, 0);
-    
-    //public Vector3 StarPanelOffset = new Vector3(0, 0, 0);
     public GameObject StarPanel;
-    
 
     public PlayerMaterialScriptableObject[] materials = null;
 
-    //privates
+    // Private Variables
     private UnityEvent starPickUpEvent;
     private PickupStars _pickupStars;
     private Rigidbody _rigidbody;
@@ -39,13 +32,11 @@ public class PlayerController : MonoBehaviour
     private float _maxVelocity;
     private int _firstMaterial = 0;
     private bool _canJump;
+    private bool _isFlying = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-
         _rigidbody = GetComponent<Rigidbody>();
-        
         _renderer = GetComponent<Renderer>();
 
         if (spawnPoint != null)
@@ -54,14 +45,12 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("Spawn point not set");
 
         InitializePlayerMaterial(materials, _firstMaterial);
-
         _pickupStars = StarPanel.GetComponent<PickupStars>();
-        
+
         if (starPickUpEvent == null)
         {
             starPickUpEvent = new UnityEvent();
         }
-        
         starPickUpEvent.AddListener(_pickupStars.StarControllerEvent);
     }
 
@@ -81,54 +70,65 @@ public class PlayerController : MonoBehaviour
         _rigidbody.isKinematic = currentMaterial[index].isKinematic;
         _rigidbody.useGravity = currentMaterial[index].useGravity;
         _canJump = currentMaterial[index].canJump;
-        
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (!_isFlying)
         {
-            _rigidbody.AddForce(Camera.main.transform.forward * moveForce, ForceMode.Acceleration);
-        }
+            if (Input.GetKey(KeyCode.W)) _rigidbody.AddForce(Camera.main.transform.forward * moveForce, ForceMode.Acceleration);
+            if (Input.GetKey(KeyCode.S)) _rigidbody.AddForce(-Camera.main.transform.forward * moveForce, ForceMode.Acceleration);
+            if (Input.GetKey(KeyCode.D)) _rigidbody.AddForce(Camera.main.transform.right * moveForce, ForceMode.Acceleration);
+            if (Input.GetKey(KeyCode.A)) _rigidbody.AddForce(-Camera.main.transform.right * moveForce, ForceMode.Acceleration);
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            _rigidbody.AddForce(-Camera.main.transform.forward * moveForce, ForceMode.Acceleration);
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            _rigidbody.AddForce(Camera.main.transform.right * moveForce, ForceMode.Acceleration);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            _rigidbody.AddForce(-Camera.main.transform.right * moveForce, ForceMode.Acceleration);
-        }
-        
-        if (_rigidbody.velocity.magnitude > _maxVelocity)
-        {
-            _rigidbody.AddForce(-_rigidbody.velocity * _rigidbody.velocity.magnitude / _maxVelocity, ForceMode.Force);
+            if (_rigidbody.velocity.magnitude > _maxVelocity)
+            {
+                _rigidbody.AddForce(-_rigidbody.velocity * _rigidbody.velocity.magnitude / _maxVelocity, ForceMode.Force);
+            }
         }
     }
 
     private void Update()
     {
-        if (transform.position.y < RestartPoint)
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.LeftShift))
         {
-            Respawn();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && _canJump)
-        {
-            _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            ToggleFlyMode();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (_isFlying)
         {
-            InitializePlayerMaterial(materials, _firstMaterial = (_firstMaterial + 1) % 3);
+            Vector3 moveDirection = Vector3.zero;
+            if (Input.GetKey(KeyCode.W)) moveDirection += Camera.main.transform.forward;
+            if (Input.GetKey(KeyCode.S)) moveDirection -= Camera.main.transform.forward;
+            if (Input.GetKey(KeyCode.D)) moveDirection += Camera.main.transform.right;
+            if (Input.GetKey(KeyCode.A)) moveDirection -= Camera.main.transform.right;
+            if (Input.GetKey(KeyCode.Space)) moveDirection += Vector3.up;
+            if (Input.GetKey(KeyCode.E)) moveDirection -= Vector3.up;
+
+            transform.position += moveDirection * flySpeed * Time.deltaTime;
         }
+        else
+        {
+            if (transform.position.y < RestartPoint)
+            {
+                Respawn();
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && _canJump)
+            {
+                _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                InitializePlayerMaterial(materials, _firstMaterial = (_firstMaterial + 1) % 3);
+            }
+        }
+    }
+
+    private void ToggleFlyMode()
+    {
+        _isFlying = !_isFlying;
+        _rigidbody.useGravity = !_isFlying;
+        _rigidbody.velocity = Vector3.zero;
     }
 
     private void OnCollisionExit(Collision collision)
@@ -136,21 +136,24 @@ public class PlayerController : MonoBehaviour
         _isGrounded = false;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("StoneBall"))
+        {
+            _rigidbody.AddForce((transform.position - collision.transform.position).normalized * knockbackForce, ForceMode.Impulse);
+        }
+        _isGrounded = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Respawn"))
-        {
-            Respawn();
-        }
-
+        if (other.CompareTag("Respawn")) Respawn();
         if (other.CompareTag("CheckPoint"))
         {
-            Transform childTransform = other.transform.GetChild(0); // Get the first child
-
+            Transform childTransform = other.transform.GetChild(0);
             lastCheckPoint = childTransform.gameObject;
             Destroy(other.GetComponent<SphereCollider>());
         }
-
         if (other.CompareTag("Star"))
         {
             starPickUpEvent.Invoke();
@@ -158,38 +161,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("StoneBall"))
-        {
-            //_rigidbody.velocity = Vector3.zero;
-            _rigidbody.AddForce((transform.position - collision.transform.position).normalized * knockbackForce, ForceMode.Impulse);
-            Debug.Log($"inside");
-        }
-    }
-
-    void OnCollisionStay(Collision collisionInfo)
-    {
-        // Debug-draw all contact points and normals
-        foreach (ContactPoint contact in collisionInfo.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal * 10, Color.white);
-        }
-
-        _isGrounded = true;
-    }
-
     void Respawn()
     {
-        if (lastCheckPoint == null)
-        {
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.MovePosition(spawnPoint.transform.position);
-        }
-        else
-        {
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.MovePosition(lastCheckPoint.transform.position);
-        }
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.MovePosition(lastCheckPoint != null ? lastCheckPoint.transform.position : spawnPoint.transform.position);
     }
 }

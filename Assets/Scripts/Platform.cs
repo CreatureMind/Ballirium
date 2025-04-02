@@ -52,7 +52,7 @@ public class Platform : MonoBehaviour
                     {
                         Vector3 vel = _platformRigidbody.position - _lastPos;
                         _lastPos = _platformRigidbody.position;
-                        _playerRigidbody.AddForce(vel, ForceMode.Force);
+                        _playerRigidbody.velocity = Vector3.zero;
                     }
                 }
             }

@@ -1239,6 +1239,8 @@ Transform:
   - {fileID: 1589476247}
   - {fileID: 1444751089}
   - {fileID: 26965847}
+  - {fileID: 425223140}
+  - {fileID: 294718400}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131786021
@@ -2163,11 +2165,11 @@ Transform:
   m_GameObject: {fileID: 294718399}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08769564, y: 0.6410094, z: -0.68247175, w: -0.34007174}
-  m_LocalPosition: {x: -46.04, y: 16.93, z: 34.54}
-  m_LocalScale: {x: 27.074728, y: 0.1, z: 1}
+  m_LocalPosition: {x: -39.79185, y: 17.39, z: 14.220043}
+  m_LocalScale: {x: 27.07473, y: 0.10000001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1983213785}
+  m_Father: {fileID: 119738090}
   m_LocalEulerAnglesHint: {x: 54.617, y: 646.33203, z: -275.26}
 --- !u!65 &294718401
 BoxCollider:
@@ -3575,11 +3577,11 @@ Transform:
   m_GameObject: {fileID: 425223139}
   serializedVersion: 2
   m_LocalRotation: {x: 0.303454, y: 0.93425506, z: -0.047583997, w: -0.18115996}
-  m_LocalPosition: {x: -46.04, y: 16.93, z: 35.2}
-  m_LocalScale: {x: 27.074728, y: 0.1, z: 1.3759}
+  m_LocalPosition: {x: -39.79185, y: 17.39, z: 14.880043}
+  m_LocalScale: {x: 27.074728, y: 0.1, z: 1.3759003}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1983213785}
+  m_Father: {fileID: 119738090}
   m_LocalEulerAnglesHint: {x: -1.205, y: 201.559, z: 35.759}
 --- !u!65 &425223141
 BoxCollider:
@@ -9146,7 +9148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170950627}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00052323577, y: 0.98491305, z: -0.17302391, w: -0.0029784422}
+  m_LocalRotation: {x: -0.00052323594, y: 0.984913, z: -0.17302395, w: -0.002978442}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11204,6 +11206,7 @@ MonoBehaviour:
   moveForce: 0
   jumpForce: 0
   knockbackForce: 10
+  flySpeed: 10
   RestartPoint: 5
   spawnPoint: {fileID: 1462128560}
   lastCheckPoint: {fileID: 0}
@@ -14435,8 +14438,6 @@ Transform:
   - {fileID: 2008856157}
   - {fileID: 800418721}
   - {fileID: 99287601}
-  - {fileID: 425223140}
-  - {fileID: 294718400}
   - {fileID: 1048734462}
   - {fileID: 1590593932}
   - {fileID: 1878593333}

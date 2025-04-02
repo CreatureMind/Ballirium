@@ -28,6 +28,14 @@ public class RollingBall : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Respawn"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
