@@ -12,12 +12,12 @@ public class GoToLevelButton : MonoBehaviour
     public void GoToLevel1()
     {
         SceneManager.LoadScene(goToLevel1);
-        //Debug.Log("Button 1 Pressed");
+        Debug.Log("Button 1 Pressed");
     }
     
     public void GoToLevel2()
     {
-        //SceneManager.LoadScene(goToLevel2);
+        SceneManager.LoadScene(goToLevel2);
         Debug.Log("Button 2 Pressed");
     }
 }

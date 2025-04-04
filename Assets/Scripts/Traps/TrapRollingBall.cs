@@ -8,7 +8,6 @@ public class TrapRollingBall : MonoBehaviour
     public GameObject ballPrefab;
     public float interval;
     public float moveSpeed;
-    public float selfDestructTime;
     public Vector3 direction;
     public float StartDelay;
 
