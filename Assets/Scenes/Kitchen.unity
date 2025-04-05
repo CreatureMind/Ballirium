@@ -666,11 +666,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
-    - target: {fileID: 121437769182588242, guid: 530b7a56d7688f64c8abf47cdeb31626,
-        type: 3}
-      propertyPath: m_Name
-      value: CanOpener
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -921,11 +916,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4719270050642011014, guid: 7997748aaba575d498fa5ad706bf988c,
-        type: 3}
-      propertyPath: m_Name
-      value: BowlDirty01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1281,11 +1271,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1365134566849750727, guid: 940718c8cfc8fd040ba5cf15bdf57657,
-        type: 3}
-      propertyPath: m_Name
-      value: IceTray02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1682,11 +1667,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1667074393907569241, guid: f2cafab1457ccbc4d879189d456c89db,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateDirty02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2123,10 +2103,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RespawnPlatform03
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8703243733396119451, guid: cfd81d6dda38fee4695e022662c06cdb,
         type: 3}
@@ -3711,10 +3687,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnPlatform04
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8703243733396119451, guid: cfd81d6dda38fee4695e022662c06cdb,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4358,10 +4330,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnPlatform
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8703243733396119451, guid: cfd81d6dda38fee4695e022662c06cdb,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4435,6 +4403,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 436707784}
     m_Modifications:
+    - target: {fileID: 133375963961797823, guid: 69ad0009617c05c4fbf37222b48b069a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
     - target: {fileID: 4830284062312190366, guid: 69ad0009617c05c4fbf37222b48b069a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4500,11 +4473,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -185.701
       objectReference: {fileID: 0}
-    - target: {fileID: 133375963961797823, guid: 69ad0009617c05c4fbf37222b48b069a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
     - target: {fileID: 6106349013878233075, guid: 69ad0009617c05c4fbf37222b48b069a,
         type: 3}
       propertyPath: m_Name
@@ -5328,11 +5296,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
-    - target: {fileID: 9014121858888683607, guid: 655bfd975a18e9345a4bb1ce13a5e0f7,
-        type: 3}
-      propertyPath: m_Name
-      value: FunnelSmall
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5601,11 +5564,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2785083835618575371, guid: f3fcf0130905dd44aa75162a5bc793d4,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateRectangle01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5784,11 +5742,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.283
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407298711468373571, guid: 9bc3470438fc5014c8c1640512db7806,
-        type: 3}
-      propertyPath: m_Name
-      value: Mustard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6122,6 +6075,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tongs
       objectReference: {fileID: 0}
+    - target: {fileID: 1402280363768472020, guid: 3e65472cde3f0e44fad43253c8ed2f80,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
     - target: {fileID: 8857462293826869783, guid: 3e65472cde3f0e44fad43253c8ed2f80,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6186,16 +6144,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1402280363768472020, guid: 3e65472cde3f0e44fad43253c8ed2f80,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
-    - target: {fileID: 608501364464219480, guid: 3e65472cde3f0e44fad43253c8ed2f80,
-        type: 3}
-      propertyPath: m_Name
-      value: Tongs
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6562,10 +6510,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RespawnPlatform05
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8703243733396119451, guid: cfd81d6dda38fee4695e022662c06cdb,
         type: 3}
@@ -8353,10 +8297,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnPlatform02
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8703243733396119451, guid: cfd81d6dda38fee4695e022662c06cdb,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -9146,11 +9086,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4719270050642011014, guid: 7997748aaba575d498fa5ad706bf988c,
-        type: 3}
-      propertyPath: m_Name
-      value: BowlDirty03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10296,11 +10231,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -66.73
       objectReference: {fileID: 0}
-    - target: {fileID: 187465711434492972, guid: c9eaf1939662d8348ab61059c3cd9926,
-        type: 3}
-      propertyPath: m_Name
-      value: Knife
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10483,11 +10413,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1667074393907569241, guid: f2cafab1457ccbc4d879189d456c89db,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateDirty01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11243,7 +11168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170950627}
   serializedVersion: 2
-  m_LocalRotation: {x: 8.3411845e-16, y: 0.96590465, z: -0.25889805, w: 1.657293e-15}
+  m_LocalRotation: {x: -0.000000011316793, y: 0.96590465, z: -0.25889805, w: -0.000000042221032}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11451,11 +11376,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -87.893
-      objectReference: {fileID: 0}
-    - target: {fileID: 2307522967216394368, guid: c068de1ccc2a5844d91865f022b508e4,
-        type: 3}
-      propertyPath: m_Name
-      value: Ketchup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11719,11 +11639,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6052175749644063323, guid: 28923ae1d29d37c4898bd43e120e042b,
-        type: 3}
-      propertyPath: m_Name
-      value: Shaker01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12073,11 +11988,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1667074393907569241, guid: f2cafab1457ccbc4d879189d456c89db,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateDirty03
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12172,11 +12082,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
-    - target: {fileID: 630841484649393432, guid: 0eb3abece1dd9104cbdcffac9aaaa264,
-        type: 3}
-      propertyPath: m_Name
-      value: Peeler
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12481,11 +12386,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2785083835618575371, guid: f3fcf0130905dd44aa75162a5bc793d4,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateRectangle03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12827,11 +12727,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6dcb90f4604db3b4a96fc5986ac44fe1, type: 2}
-    - target: {fileID: 7464990753968022362, guid: 0df1e0a1e07821241b1d386c711506e9,
-        type: 3}
-      propertyPath: m_Name
-      value: RollingPin
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13748,11 +13643,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1365134566849750727, guid: 940718c8cfc8fd040ba5cf15bdf57657,
-        type: 3}
-      propertyPath: m_Name
-      value: IceTray01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14429,11 +14319,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 906440328127222306, guid: 4a7f365ab2879ea408d246831d8679dd,
-        type: 3}
-      propertyPath: m_Name
-      value: GrindMortar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15183,11 +15068,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2785083835618575371, guid: f3fcf0130905dd44aa75162a5bc793d4,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateRectangle02
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15611,6 +15491,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spoon
       objectReference: {fileID: 0}
+    - target: {fileID: 4251139131707541148, guid: 0136fa57d60a15748a73984e32a1ade2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
     - target: {fileID: 5176221938839204907, guid: 0136fa57d60a15748a73984e32a1ade2,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -15675,16 +15560,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251139131707541148, guid: 0136fa57d60a15748a73984e32a1ade2,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
-    - target: {fileID: 218026479790453136, guid: 0136fa57d60a15748a73984e32a1ade2,
-        type: 3}
-      propertyPath: m_Name
-      value: Spoon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15969,11 +15844,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2785083835618575371, guid: f3fcf0130905dd44aa75162a5bc793d4,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateRectangle04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17196,11 +17066,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6dcb90f4604db3b4a96fc5986ac44fe1, type: 2}
-    - target: {fileID: 4508140307438476262, guid: 0e13defcaa619d046a1337d5d5c6593b,
-        type: 3}
-      propertyPath: m_Name
-      value: PepperGrinder
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17519,11 +17384,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 92.178
       objectReference: {fileID: 0}
-    - target: {fileID: 1927503665114784314, guid: bac46067a32eb5b4da39c2c0d635a4a5,
-        type: 3}
-      propertyPath: m_Name
-      value: Carrot
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17777,11 +17637,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4719270050642011014, guid: 7997748aaba575d498fa5ad706bf988c,
-        type: 3}
-      propertyPath: m_Name
-      value: BowlDirty02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18093,11 +17948,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dae79d7538a414f18be286d1a1ab69ab, type: 2}
-    - target: {fileID: 1419454985751851169, guid: f263081eee51df142aea3d9f6554e2e0,
-        type: 3}
-      propertyPath: m_Name
-      value: PeelingKnife
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18725,7 +18575,7 @@ PrefabInstance:
     - target: {fileID: 1005576508182532006, guid: 44c2b3b06370aa4448c66457ac516c60,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1005576508182532006, guid: 44c2b3b06370aa4448c66457ac516c60,
         type: 3}
@@ -18735,12 +18585,12 @@ PrefabInstance:
     - target: {fileID: 1005576508182532006, guid: 44c2b3b06370aa4448c66457ac516c60,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1005576508182532006, guid: 44c2b3b06370aa4448c66457ac516c60,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1005576508182532006, guid: 44c2b3b06370aa4448c66457ac516c60,
         type: 3}
@@ -18750,7 +18600,7 @@ PrefabInstance:
     - target: {fileID: 1005576508182532006, guid: 44c2b3b06370aa4448c66457ac516c60,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1005576508182532006, guid: 44c2b3b06370aa4448c66457ac516c60,
         type: 3}
@@ -18948,7 +18798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023498578}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000005155221, y: 0.97044253, z: -0.24133255, w: -0.000000020730093}
+  m_LocalRotation: {x: -0.00000001054898, y: 0.97044253, z: -0.24133253, w: -0.00000004241939}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19295,7 +19145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065279616}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000000041190473, y: 0.96103567, z: -0.27642453, w: -0.00000001432055}
+  m_LocalRotation: {x: -0.000000012082901, y: 0.96103567, z: -0.27642456, w: -0.000000042008203}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19884,11 +19734,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6052175749644063323, guid: 28923ae1d29d37c4898bd43e120e042b,
-        type: 3}
-      propertyPath: m_Name
-      value: Shaker02
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20394,10 +20239,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RespawnPlatform01
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8703243733396119451, guid: cfd81d6dda38fee4695e022662c06cdb,
         type: 3}
